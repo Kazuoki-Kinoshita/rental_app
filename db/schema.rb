@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2023_02_24_101645) do
+ActiveRecord::Schema.define(version: 2023_02_24_141824) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2023_02_24_101645) do
     t.integer "minutes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "property_id"
   end
 
 end
