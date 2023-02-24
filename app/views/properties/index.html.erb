@@ -1,2 +1,21 @@
-<h1>Properties#index</h1>
-<p>Find me in app/views/properties/index.html.erb</p>
+<h1>物件一覧</h1>
+
+<table>
+  <ul>
+    <tr>
+      <th>物件名</th>
+      <th>賃料</th>
+      <th>住所</th>
+      <th>築年数</th>
+      <th>備考</th>
+    </tr>
+    <% @properties.each do |property| %>
+    <tr>
+      <td><%= property.name %></td>
+      <td><%= property.rent %>円</td>
+      <td><%= property.address %></td>
+      <td><%= property.year %>年</td>
+      <td><%= property.remark %></td>
+    </tr>
+  <% end %>
+</table>
