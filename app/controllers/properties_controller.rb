@@ -27,10 +27,16 @@ class PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])    
     if @property.update(properties_params)
-      redirect_to properties_path notice: "物件編集を完了しました！"
+      redirect_to properties_path, notice: "物件編集を完了しました！"
     else
       render :edit
     end
+  end
+
+  def destroy
+    @property = Property.find(params[:id])    
+    @property.destroy
+    redirect_to properties_path, notice: "物件を削除しました！"
   end
 
 
