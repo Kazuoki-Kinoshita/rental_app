@@ -4,5 +4,5 @@
 <p>築年数：<%= @property.year %>年</p>
 <p>備考：<%= @property.remark %></p>
 
-<%= link_to "編集", "#" %>
+<%= link_to "編集", edit_property_path(@property.id) %>
 <%= link_to "戻る", properties_path %>
