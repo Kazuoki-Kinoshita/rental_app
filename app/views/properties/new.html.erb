@@ -1,6 +1,16 @@
 <h1>物件登録</h1>
 
 <%= form_with(model: @property, local: true) do |form| %>
+  <% if @property.errors.any? %>
+    <ul>
+    <div class="error_explanation" >
+      <% @property.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+      <% end %>
+    </div>
+    </ul>
+  <% end %>
+
   <p><%= form.label :name %></p>
   <p><%= form.text_field :name %></p>
   <p><%= form.label :rent %></p>

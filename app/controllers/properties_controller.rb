@@ -8,9 +8,13 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property = Property.create(properties_params)
-    redirect_to properties_path
-  end  
+    @property = Property.new(properties_params)
+    if @property.save
+      redirect_to properties_path
+    else
+      render :new
+    end
+  end
 
 
   private
