@@ -1,4 +1,5 @@
 <h1>物件一覧</h1>
+<%= notice %>
 
 <table>
   <ul>
@@ -11,11 +12,14 @@
     </tr>
     <% @properties.each do |property| %>
     <tr>
-      <td><%= link_to "#{property.name}", property_path(property.id) %></td>
+      <td><%= property.name %></td>
       <td><%= property.rent %>円</td>
       <td><%= property.address %></td>
       <td><%= property.year %>年</td>
       <td><%= property.remark %></td>
+      <td><%= link_to "詳細", property_path(property.id) %></td>
+      <td><%= link_to "編集", edit_property_path(property.id) %></td>
+      <td><%= link_to "削除", property_path(property.id), method: :delete %></td>
     </tr>
   <% end %>
 </table>
