@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  before_action :set_properties, only: [:show, :edit, :update, :destroy]
+
   def index
     @properties = Property.all
   end
@@ -26,17 +28,14 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @property = Property.find(params[:id])
     @stations = @property.stations
   end
 
   def edit
-    @property = Property.find(params[:id])
     @property.stations.build
   end
 
   def update
-    @property = Property.find(params[:id])    
     if @property.update(properties_params)
       redirect_to properties_path, notice: "物件編集を完了しました！"
     else
@@ -46,7 +45,6 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    @property = Property.find(params[:id])    
     @property.destroy
     redirect_to properties_path, notice: "物件を削除しました！"
   end
@@ -56,5 +54,9 @@ class PropertiesController < ApplicationController
 
   def properties_params
     params.require(:property).permit(:name, :rent, :address, :year, :remark, stations_attributes: [:id, :line, :station_name, :minutes])
+  end
+
+  def set_properties
+    @property = Property.find(params[:id])
   end
 end
