@@ -14,3 +14,5 @@ ja:
         line: 路線名
         station_name: 駅名
         minutes: 徒歩分数
+      stations:
+        minutes: 徒歩分数
