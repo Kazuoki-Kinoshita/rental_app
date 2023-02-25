@@ -21,6 +21,7 @@
   <p><%= form.text_field :year %>年</p>
   <p><%= form.label :remark %></p>
   <p><%= form.text_field :remark %></p>
+  <hr>
   
   <% i = 1 %>
   <%= form.fields_for :stations do |station_form| %>
@@ -30,7 +31,7 @@
     <p><%= station_form.label :station_name %></p>
     <p><%= station_form.text_field :station_name %></p>
     <p><%= station_form.label :minutes %></p>
-    <p><%= station_form.text_field :minutes %></p>
+    <p><%= station_form.text_field :minutes %>分</p>
     <% i += 1 %>
   <% end %>
 
