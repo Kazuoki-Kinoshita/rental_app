@@ -13,8 +13,15 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to properties_path, notice: "物件登録を完了しました！"
     else
-      2.times { @property.stations.build }
-      render :new
+      if @property.stations.length == 2
+        render :new
+      elsif @property.stations.length == 1
+        @property.stations.build
+        render :new
+      else
+        2.times { @property.stations.build }
+        render :new
+      end
     end
   end
 
