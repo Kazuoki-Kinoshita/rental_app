@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2023_02_24_141824) do
+ActiveRecord::Schema.define(version: 2023_02_25_041352) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
