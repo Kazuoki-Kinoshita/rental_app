@@ -1,0 +1,37 @@
+<%= form_with(model: @property, local: true) do |form| %>
+  <% if @property.errors.any? %>
+    <ul>
+    <div class="error_explanation" >
+      <% @property.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+      <% end %>
+    </div>
+    </ul>
+  <% end %>
+
+  <p><%= form.label :name %></p>
+  <p><%= form.text_field :name %></p>
+  <p><%= form.label :rent %></p>
+  <p><%= form.text_field :rent %>円</p>
+  <p><%= form.label :address %></p>
+  <p><%= form.text_field :address %></p>
+  <p><%= form.label :year %></p>
+  <p><%= form.text_field :year %>年</p>
+  <p><%= form.label :remark %></p>
+  <p><%= form.text_field :remark %></p>
+  <hr>
+
+  <% number = 1 %>
+  <%= form.fields_for :stations do |station_form| %>
+    <h4><%= "最寄り駅#{number}" %></h4>
+    <p><%= station_form.label :line %></p>
+    <p><%= station_form.text_field :line %></p>
+    <p><%= station_form.label :station_name %></p>
+    <p><%= station_form.text_field :station_name %></p>
+    <p><%= station_form.label :minutes %></p>
+    <p><%= station_form.text_field :minutes%>分</p>
+    <% number += 1 %>
+  <% end %>
+ 
+  <p><%= form.submit %></p>
+<% end %>
