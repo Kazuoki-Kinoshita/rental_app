@@ -4,14 +4,22 @@
 <p>築年数：<%= @property.year %>年</p>
 <p>備考：<%= @property.remark %></p>
 
-<% i = 1 %>
-<% @stations.each do |station| %>
-  <h4><%= "最寄り駅#{i}" %></h4>
-  <p>路線名：<%= station.line %></p>
-  <p>駅名：<%= station.station_name %></p>
-  <p>徒歩分数：<%= station.minutes %>分</p>  
-  <% i += 1%>
+<% if @stations.present? %>
+  <% i = 1 %>
+  <% @stations.each do |station| %>
+    <h4><%= "最寄り駅#{i}" %></h4>
+    <p>路線名：<%= station.line %></p>
+    <p>駅名：<%= station.station_name %></p>
+    <p>徒歩分数：<%= station.minutes %>分</p>  
+    <% i += 1%>
+  <% end %>
+<% else %>
+  <h4><%= "最寄り駅1" %></h4>
+  <p>路線名： - </p>
+  <p>駅名： - </p>
+  <p>徒歩分数： -  分</p>   
 <% end %>
+
 
 <%= link_to "編集", edit_property_path(@property.id) %>
 <%= link_to "戻る", properties_path %>

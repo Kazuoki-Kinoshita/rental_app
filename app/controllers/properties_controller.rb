@@ -20,12 +20,15 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @stations = @property.stations
-    byebug
   end
 
   def edit
-    @property = Property.find(params[:id])    
-    @property.stations.build
+    @property = Property.find(params[:id])
+    if @property.stations.present?
+      @property.stations.build
+    else
+      2.times { @property.stations.build }
+    end
   end
 
   def update
