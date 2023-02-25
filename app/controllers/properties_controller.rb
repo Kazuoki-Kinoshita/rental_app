@@ -19,6 +19,8 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @stations = @property.stations
+    byebug
   end
 
   def edit
