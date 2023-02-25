@@ -13,6 +13,7 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to properties_path, notice: "物件登録を完了しました！"
     else
+      2.times { @property.stations.build }
       render :new
     end
   end
@@ -24,11 +25,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
-    if @property.stations.present?
-      @property.stations.build
-    else
-      2.times { @property.stations.build }
-    end
+    @property.stations.build
   end
 
   def update
@@ -36,6 +33,7 @@ class PropertiesController < ApplicationController
     if @property.update(properties_params)
       redirect_to properties_path, notice: "物件編集を完了しました！"
     else
+      @property.stations.build
       render :edit
     end
   end
